@@ -4,13 +4,16 @@ const productRoute=require("./routes/products.js")
 const postRoute=require("./routes/post.js")
 const voitureRoute=require("./routes/voiture.js")
 const bodyParser=require("body-parser")
+
+//var d"envi 
 const dotenv=require('dotenv');
 const mongoose=require('mongoose');
 
 //creation of the  server instance   
 const app=express()
 
-//configuration le file env
+//configuration lel file env
+//thel config bch yaaref mnin bch yjib config mteeou
 dotenv.config()
 const MONGODB_URI= process.env.MONGODB_URI
 const PORT = process.env.PORT || 5000
@@ -57,7 +60,6 @@ app.use("/product",productRoute);
 app.use("/post",postRoute);
 app.use("/voiture",voitureRoute);
 
-
 //cette methode return containte page index.html (dirname c'est un short list pour resumer le partie de template html(t3axed el path))
 app.get("/template",(req,res)=>{
     res.sendFile(__dirname+"/index.html")
@@ -77,6 +79,7 @@ app.get('/',(req,res)=>{
     console.log("Server is running on port 4000");
 })
 */
+
 mongoose.connect(MONGODB_URI).then(()=>{
     console.log('connected to the database');
     app.listen(PORT,()=>{console.log(`Server is running on port ${PORT}`);})
