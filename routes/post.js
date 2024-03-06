@@ -2,9 +2,10 @@ const express=require ('express')
 const router=express.Router();
 const Post =require('../models/post');
 const { exists } = require('../models/user');
+const authenticate = require('../middleware/authenticate');
 
 //add new post
-router.post('/add', async (req, res) => {
+router.post('/add',authenticate, async (req, res) => {
     try {
         const { title,description } = req.body;
 
@@ -16,7 +17,8 @@ router.post('/add', async (req, res) => {
         // Create a new post 
         const newPost = new Post({
             title,
-            description
+            description,
+            author: req.userId
         });
 
         // Save the post to the database
